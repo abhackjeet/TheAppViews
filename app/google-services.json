@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "502258363607",
+    "project_id": "theapp-cfdb3",
+    "storage_bucket": "theapp-cfdb3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:502258363607:android:aa771d7330cddc488d1492",
+        "android_client_info": {
+          "package_name": "com.example.theappviews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "502258363607-dohje6nt2c0210r88s6k39dqn8rcuupi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeQ_msaQ1cubgDHatDNSYOPZB02crcsww"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "502258363607-dohje6nt2c0210r88s6k39dqn8rcuupi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
