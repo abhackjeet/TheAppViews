@@ -3,17 +3,11 @@ package com.example.theappviews
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.*
-import androidx.core.view.get
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_registration.*
-import java.lang.ref.PhantomReference
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_registration.genderTextView
 
@@ -25,7 +19,7 @@ class RegistrationActivity : AppCompatActivity() {
 
     lateinit var option : Spinner
     lateinit var result : TextView
-
+    lateinit var selected :String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,9 +43,9 @@ class RegistrationActivity : AppCompatActivity() {
         option = findViewById(R.id.spinnerOne) as Spinner
         result = findViewById(R.id.petsText) as TextView
 
-        val options = arrayOf("Option 1", "Option 2","Option 3")
+        val options = arrayOf("Dog", "Cat", "Rabbit", "Horse", "Panda")
 
-        option.adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,options)
+        option.adapter = ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,options)
 
 
         registerButton.setOnClickListener {
@@ -85,13 +79,13 @@ class RegistrationActivity : AppCompatActivity() {
             // val genderFemale = female.text.toString()
 
 
-
+            Log.d("ash",selected)
             val intent = Intent(this@RegistrationActivity, ProfileActivity::class.java)
             intent.putExtra("Name", name)
             intent.putExtra("Nickname", nickname)
             intent.putExtra("User Email ID", emailId)
             intent.putExtra("Password", password)
-
+            intent.putExtra("pet",selected)
 
             val id = radioGroup.checkedRadioButtonId
 
@@ -102,27 +96,18 @@ class RegistrationActivity : AppCompatActivity() {
                     Toast.LENGTH_LONG).show()
             }
 
-            option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-                override fun onNothingSelected(parent: AdapterView<*>?) {
-                    result.text = "Please Select an Option"
-                }
-
-                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                    val selected: String = spinnerInput.getItemAtPosition(position).toString()
-                    intent.putExtra("Pet", selected)
-
-                }
-            }
 
             startActivity(intent)
 
         }
+        option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                result.text = "Please Select an Option"
+            }
 
-
-
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                selected = spinnerInput.getItemAtPosition(position).toString()
+            }
+        }
     }
-
-
-
-
 }

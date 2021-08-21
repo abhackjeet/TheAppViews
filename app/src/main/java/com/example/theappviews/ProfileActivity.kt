@@ -28,7 +28,7 @@ class ProfileActivity : AppCompatActivity() {
         val emailId = intent.getStringExtra("User Email ID")
         val password = intent.getStringExtra("Password")
         val gender = intent.getStringExtra("Gender")
-       val selected = intent.getStringExtra("Pet")
+       val selected = intent.getStringExtra("pet")
 
 
         val nameText = findViewById<TextView>(R.id.nameText)
